@@ -1,0 +1,233 @@
+/* --- MASTER TOPBAR CONTAINER --- */
+.navbar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #131921; /* Amazon Dark Theme */
+  color: white;
+  padding: 0 20px;
+  height: 65px; /* Slightly taller for better vertical centering */
+  gap: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 2000; /* Ensure it stays above all other content */
+}
+
+/* --- LEFT SECTION: LOGO & BRANDING --- */
+.nav-left-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0; /* Prevents logo from getting squeezed */
+}
+
+.nav-logo-section {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-logo-img {
+  height: 35px;
+  width: auto;
+  object-fit: contain;
+  margin-right: 8px;
+}
+
+.logo-text-branding {
+  font-size: 1.6rem;
+  font-weight: bold;
+  letter-spacing: -1px;
+}
+
+.logo-text-branding span {
+  color: #b9f319; /* Your AgriConnect Green */
+}
+
+/* --- CENTER SECTION: SEARCH BAR --- */
+.nav-search-fill {
+  flex-grow: 1; /* Search bar fills the available middle space */
+  max-width: 750px;
+  margin: 0 10px;
+}
+
+.search-container-inner {
+  display: flex;
+  height: 40px;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.search-container-inner input {
+  flex-grow: 1;
+  border: none;
+  padding: 0 15px;
+  outline: none;
+  font-size: 14px;
+  color: #333;
+}
+
+.search-btn {
+  background: #40911d; 
+  border: none;
+  width: 50px;
+  cursor: pointer;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.search-btn:hover {
+  background: #1bb709;
+}
+
+/* --- RIGHT SECTION: UTILITIES --- */
+.nav-right-utility {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.nav-links li a:hover {
+  color: #24a917;
+}
+
+/* --- ACCOUNT DROPDOWN STYLING --- */
+.nav-item-account {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+  min-width: 140px;
+}
+
+.nav-item-account:hover {
+  border: 1px solid white;
+  border-radius: 2px;
+}
+
+.nav-line-1 { font-size: 12px; color: #ccc; line-height: 14px; }
+.nav-line-2 { font-size: 14px; font-weight: bold; }
+
+.account-dropdown-panel {
+  position: absolute;
+  top: 55px; /* Aligned to bottom of navbar */
+  right: -5px;
+  background: white;
+  min-width: 180px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  border-radius: 4px;
+  z-index: 2100;
+  padding: 10px 0;
+}
+
+/* The small white arrow pointing up */
+.dropdown-arrow {
+  position: absolute;
+  top: -8px;
+  right: 30px;
+  width: 0; height: 0; 
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid white;
+}
+
+.account-menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.account-menu-list li a {
+  color: #333 !important;
+  font-weight: 500;
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.account-menu-list li:hover {
+  background-color: #f3f3f3;
+}
+
+.logout-btn {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #c40000; /* Red Sign Out */
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #fff1f1;
+}
+
+/* --- CART ICON WITH BADGE --- */
+.cart-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: white;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+}
+
+.cart-icon-wrapper:hover {
+  border: 1px solid white;
+  border-radius: 2px;
+}
+
+.cart-badge-container {
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -5px;
+  background: #82d407; 
+  color: black;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: bold;
+  min-width: 18px;
+  text-align: center;
+}
+
+.cart-icon-wrapper i {
+  font-size: 24px;
+}
+
+

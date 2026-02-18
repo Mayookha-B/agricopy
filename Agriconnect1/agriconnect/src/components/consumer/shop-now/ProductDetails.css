@@ -1,0 +1,24 @@
+.product-details-container { padding: 80px 20px; background: #fdfdfd; min-height: 100vh; }
+.details-card {
+  max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr;
+  gap: 50px; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+}
+
+.details-image img { width: 100%; border-radius: 15px; object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+.badge { color: #8BC34A; font-weight: bold; font-size: 14px; text-transform: uppercase; }
+.price-box { margin: 20px 0; }
+.unit-price { font-size: 32px; font-weight: 800; color: #1a4314; }
+
+/* --- QUANTITY & BILLING --- */
+.qty-controls { display: flex; align-items: center; gap: 10px; margin: 10px 0; }
+.qty-controls button { width: 40px; height: 40px; border: 1px solid #ddd; background: #fff; cursor: pointer; }
+.qty-controls input { width: 60px; height: 40px; text-align: center; border: 1px solid #ddd; font-weight: bold; }
+
+.total-billing { background: #f4ffe8; padding: 20px; border-radius: 10px; margin: 25px 0; }
+.total-billing h2 { color: #2e7d32; margin-top: 5px; }
+
+/* --- BUTTONS --- */
+.details-actions { display: flex; gap: 15px; }
+.cart-btn { flex: 1; padding: 15px; border: 2px solid #1a4314; background: transparent; color: #1a4314; font-weight: bold; border-radius: 8px; cursor: pointer; }
+.buy-btn { flex: 1; padding: 15px; background: #1a4314; color: white; border: none; font-weight: bold; border-radius: 8px; cursor: pointer; }

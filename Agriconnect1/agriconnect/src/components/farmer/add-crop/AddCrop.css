@@ -1,0 +1,118 @@
+.add-crop-page {
+  background-color: #f4f7f6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 20px;
+}
+
+.form-container {
+  background: #ffffff;
+  width: 100%;
+  max-width: 800px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  border-top: 6px solid #28a745;
+  padding: 40px;
+}
+
+.form-header h1 {
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.form-header p {
+  color: #7f8c8d;
+  margin-bottom: 30px;
+}
+
+.input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #444;
+  font-size: 0.85rem;
+}
+
+.input-group input, .input-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dcdde1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+  outline: none;
+}
+
+.upload-wrapper {
+  margin-top: 10px;
+  border: 2px dashed #dcdde1;
+  border-radius: 12px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fcfcfc;
+  overflow: hidden;
+}
+
+.hidden-input { display: none; }
+
+.upload-label { cursor: pointer; text-align: center; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+
+.img-preview { width: 100%; height: 100%; object-fit: cover; }
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+  border-top: 1px solid #eee;
+  padding-top: 25px;
+}
+
+.submit-btn {
+  background: #28a745;
+  color: white;
+  padding: 12px 35px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover { background: #218838; }
+
+.cancel-btn {
+  background: #eee;
+  color: #666;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .input-grid, .stats-grid { grid-template-columns: 1fr; }
+}
