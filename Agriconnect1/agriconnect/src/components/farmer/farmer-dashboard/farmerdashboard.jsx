@@ -207,6 +207,11 @@ function FarmerDashboard() {
                <MDBIcon fas icon="plus" className="me-2" /> Add Crop
              </MDBBtn>
           </MDBCol>
+          <MDBCol md="2" className="text-end">
+             <MDBBtn onClick={() => navigate('/add-upcoming')} className="w-100 py-3 shadow-0" style={{ backgroundColor: agrilight, border: 'none', fontWeight: 'bold' }}>
+               <MDBIcon fas icon="plus" className="me-2" /> Add Upcoming Harvest
+             </MDBBtn>
+          </MDBCol>
         </MDBRow>
 
         {/* --- 4. MAIN DASHBOARD GRID --- */}

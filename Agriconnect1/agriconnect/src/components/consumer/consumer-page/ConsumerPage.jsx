@@ -153,6 +153,7 @@ const ConsumerPage = () => {
           <ul className="nav-links">
             <li>Home</li>
             <li><Link to="/shop">Shop</Link></li>
+            <li><Link to="/forecast">Forecast</Link></li>
             
             <Link to="/cart" className="cart-icon-wrapper">
       <div className="cart-badge-container">

@@ -24,6 +24,9 @@ import Checkout from "./components/consumer/checkout/Checkout";
 import CartPage from "./components/consumer/cart/CartPage";
 import Navbar from "./components/common/Navbar";
 import ConsumerHelpPage from './components/consumer/consumer-help/ConsumerHelpPage';
+import Forecast from "./components/consumer/Forecast/BuyerForecastDashboard"; 
+import AddUpcomingHarvest from "./components/farmer/add-upcoming/AddUpcomingHarvest";
+import HarvestDetails from "./components/consumer/harvest-details/HarvestDetails";
 
 const App = () => {
   return (
@@ -48,6 +51,9 @@ const App = () => {
           <Route path="/help" element={<HelpPage />} />
           <Route path="/consumer-page" element={<ConsumerPage />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/add-upcoming" element={<AddUpcomingHarvest />} />  
+          <Route path="/forecast" element={<Forecast />} />
+          <Route path="/harvest-details/:id" element={<HarvestDetails />} />
 
           {/* PAGES WITH TOPBAR (Consumer Routes) */}
           <Route path="/shop" element={<><Navbar /><ShopPage /></>} />
