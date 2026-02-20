@@ -74,6 +74,21 @@ router.post('/login', async (req, res) => {
   }
 });
 
-
+// GET: Fetch all registered farmers
+router.get('/all', async (req, res) => {
+  try {
+    // Fetch only necessary details: Name, Custom ID, and DB ID
+    const farmers = await Farmer.find({}, 'fullName farmerCustomId _id');
+    res.status(200).json(farmers);
+  } catch (err) {
+    console.error("Error fetching farmers:", err.message);
+    res.status(500).json({ message: "Failed to retrieve farmers" });
+  }
+});
+// Get specific farmer info for the profile header
+router.get('/details/:id', async (req, res) => {
+  const farmer = await Farmer.findById(req.params.id, 'fullName farmerCustomId');
+  res.json(farmer);
+});
 
 module.exports = router;

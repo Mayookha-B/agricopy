@@ -154,6 +154,7 @@ const ConsumerPage = () => {
             <li>Home</li>
             <li><Link to="/shop">Shop</Link></li>
             <li><Link to="/forecast">Forecast</Link></li>
+            <li><Link to="/farmer-directory">Farmers Directory</Link></li>
             
             <Link to="/cart" className="cart-icon-wrapper">
       <div className="cart-badge-container">

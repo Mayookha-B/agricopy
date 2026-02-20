@@ -1,0 +1,13 @@
+.transition-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.transition-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+}
+
+.bg-success-subtle {
+  background-color: #e8f5e9 !important;
+}

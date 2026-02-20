@@ -193,4 +193,38 @@ router.get('/upcoming/:id', async (req, res) => {
   }
 });
 
+// Get a single farmer's basic details
+router.get('/details/:id', async (req, res) => {
+  const farmer = await Farmer.findById(req.params.id, 'fullName farmerCustomId');
+  res.json(farmer);
+});
+
+// Get currently available products for a specific farmer
+router.get('/farmer/:farmerId', async (req, res) => {
+  const products = await Product.find({ farmerId: req.params.farmerId, status: 'Available' });
+  res.json(products);
+});
+
+// Get upcoming forecast harvests for a specific farmer
+// File: backend/routes/productRoutes.js
+
+router.get('/upcoming/farmer/:farmerId', async (req, res) => {
+  try {
+    const { farmerId } = req.params;
+    
+    // DEBUG: Check what ID the frontend is sending
+    console.log("Searching for harvests by Farmer ID:", farmerId);
+
+    // Ensure you are using 'farmerId' (or whatever matches your Schema)
+    const forecasts = await UpcomingHarvest.find({ farmerId: farmerId });
+    
+    // DEBUG: Check how many were actually found
+    console.log(`Found ${forecasts.length} products for this farmer.`);
+    
+    res.json(forecasts);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching farmer-specific products" });
+  }
+});
+
 module.exports = router;
