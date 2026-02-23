@@ -1,0 +1,25 @@
+.harvest-date-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #2d6a4f;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.x-small {
+    font-size: 0.75rem;
+}
+
+.bg-warning-light {
+    background-color: #fff9e6;
+}
+
+.forecast-card:hover {
+    transform: translateY(-5px);
+    transition: 0.3s ease;
+}

@@ -24,6 +24,11 @@ import Checkout from "./components/consumer/checkout/Checkout";
 import CartPage from "./components/consumer/cart/CartPage";
 import Navbar from "./components/common/Navbar";
 import ConsumerHelpPage from './components/consumer/consumer-help/ConsumerHelpPage';
+import Forecast from "./components/consumer/Forecast/BuyerForecastDashboard"; 
+import AddUpcomingHarvest from "./components/farmer/add-upcoming/AddUpcomingHarvest";
+import HarvestDetails from "./components/consumer/harvest-details/HarvestDetails";
+import FarmerProfile from "./components/consumer/farmer-profile/FarmerProfile";
+import FarmersDirectory from "./components/consumer/farmer-directory/FarmersDirectory";
 
 const App = () => {
   return (
@@ -48,6 +53,9 @@ const App = () => {
           <Route path="/help" element={<HelpPage />} />
           <Route path="/consumer-page" element={<ConsumerPage />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/add-upcoming" element={<AddUpcomingHarvest />} />  
+          <Route path="/forecast" element={<Forecast />} />
+          <Route path="/harvest-details/:id" element={<HarvestDetails />} />
 
           {/* PAGES WITH TOPBAR (Consumer Routes) */}
           <Route path="/shop" element={<><Navbar /><ShopPage /></>} />
@@ -56,7 +64,10 @@ const App = () => {
           <Route path="/checkout" element={<><Navbar /><Checkout /></>} />
           <Route path="/my-orders" element={<><Navbar /><MyOrders /></>} />
           <Route path="/consumer-help" element={<><Navbar /><ConsumerHelpPage /></>} />
-          
+          <Route path="/farmer-profile" element={<><Navbar /><FarmerProfile /></>} />
+          <Route path="/farmer/:farmerId" element={<><Navbar /><FarmerProfile /></>} />
+          <Route path="/forecast-details/:id" element={<><Navbar /><HarvestDetails /></>} />
+          <Route path="/farmer-directory" element={<><Navbar /><FarmersDirectory /></>} />
           {/* FARMER DASHBOARD (Uses its own Sidebar) */}
           <Route path="/farmer-dashboard" element={<FarmerDashboard />} />
           {/* ... */}

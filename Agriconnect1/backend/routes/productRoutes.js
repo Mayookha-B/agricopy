@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Product = require('../models/Product');
+const UpcomingHarvest = require('../models/UpcomingHarvest');
 const auth = require('../middleware/auth');
+const Farmer = require('../models/Farmer');
 const multer = require('multer');
 
 // Multer Storage Setup
@@ -123,6 +125,105 @@ router.get('/filter/nearby', async (req, res) => {
     res.json(products);
   } catch (err) {
     res.status(500).json({ message: "Location search failed", error: err.message });
+  }
+});
+
+// Farmer lists a future crop
+router.post('/add-upcoming', auth, upload.single('image'), async (req, res) => {
+  try {
+    const { cropName, category, expectedHarvestDate, quantity, priceInINR, manualAddress, lat, lon } = req.body;
+
+    const newUpcoming = new UpcomingHarvest({
+      farmerId: req.user.id,
+      cropName,
+      category,
+      expectedHarvestDate,
+      quantity,
+      priceInINR: parseFloat(priceInINR),
+      manualAddress,
+      image: req.file ? req.file.path : 'uploads/placeholder.jpg',
+      location: { 
+        type: 'Point', 
+        coordinates: [parseFloat(lon), parseFloat(lat)] 
+      }
+    });
+
+    await newUpcoming.save();
+    res.status(201).json({ success: true, message: "Upcoming harvest listed!" });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// @route    GET /api/products/upcoming/all
+// @desc     Fetch only future harvests for the Buyer Forecast Dashboard
+router.get('/upcoming/all', async (req, res) => {
+  try {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // Mongoose now knows what 'Farmer' is because of the require above
+    const upcoming = await UpcomingHarvest.find({
+      expectedHarvestDate: { $gte: today }
+    })
+    .populate('farmerId', 'fullName name') 
+    .sort({ expectedHarvestDate: 1 });
+
+    res.json(upcoming);
+  } catch (err) {
+    console.error("Fetch Error:", err.message);
+    res.status(500).json({ message: "Error fetching forecast data" });
+  }
+});
+
+// @route    GET /api/products/upcoming/:id
+router.get('/upcoming/:id', async (req, res) => {
+  try {
+    // We populate farmerId to get the name, custom ID, and contact info
+    const harvest = await UpcomingHarvest.findById(req.params.id)
+      .populate('farmerId', 'fullName name farmerCustomId phone email'); 
+
+    if (!harvest) {
+      return res.status(404).json({ message: "No harvest details found." });
+    }
+    res.json(harvest);
+  } catch (err) {
+    console.error("Backend Error:", err.message);
+    res.status(500).json({ message: "Server error fetching details" });
+  }
+});
+
+// Get a single farmer's basic details
+router.get('/details/:id', async (req, res) => {
+  const farmer = await Farmer.findById(req.params.id, 'fullName farmerCustomId');
+  res.json(farmer);
+});
+
+// Get currently available products for a specific farmer
+router.get('/farmer/:farmerId', async (req, res) => {
+  const products = await Product.find({ farmerId: req.params.farmerId, status: 'Available' });
+  res.json(products);
+});
+
+// Get upcoming forecast harvests for a specific farmer
+// File: backend/routes/productRoutes.js
+
+router.get('/upcoming/farmer/:farmerId', async (req, res) => {
+  try {
+    const { farmerId } = req.params;
+    
+    // DEBUG: Check what ID the frontend is sending
+    console.log("Searching for harvests by Farmer ID:", farmerId);
+
+    // Ensure you are using 'farmerId' (or whatever matches your Schema)
+    const forecasts = await UpcomingHarvest.find({ farmerId: farmerId });
+    
+    // DEBUG: Check how many were actually found
+    console.log(`Found ${forecasts.length} products for this farmer.`);
+    
+    res.json(forecasts);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching farmer-specific products" });
   }
 });
 
